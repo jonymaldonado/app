@@ -10,13 +10,13 @@ public class MainTest {
 
     public static void main(String args[]){
          Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://reqres.in/")
+                .baseUrl("https://api.openweathermap.org/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         RetrofitUsersService service = retrofit.create(RetrofitUsersService.class);
 
-        Call<ResponseUser> call = service.getUser(2);
+        Call<ResponseUser> call = service.getUser(200);
         try{
             Response<ResponseUser> response = call.execute();
             User user = response.body().data;
